@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoReceipt — Dashboard</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧾</text></svg>">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            min-height: 100vh;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar h1 { font-size: 1.5rem; }
+        .navbar .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: transform 0.2s;
+        }
+        .btn:hover { transform: translateY(-1px); }
+        .btn-primary {
+            background: white;
+            color: #667eea;
+            font-weight: 600;
+        }
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .stat-card h3 {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .receipts-table {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        .receipts-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .receipts-table th {
+            background: #f8f9fa;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9rem;
+        }
+        .receipts-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            color: #555;
+            font-size: 0.9rem;
+        }
+        .receipts-table tr:hover {
+            background: #f8f9fa;
+        }
+        .amount {
+            font-weight: 600;
+            color: #667eea;
+        }
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .actions { flex-direction: column; }
+            .receipts-table { overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>🧾 AutoReceipt</h1>
+        <div class="user-info">
+            <span id="user-email">Loading...</span>
+            <a href="/logout" class="btn btn-secondary">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Receipts</h3>
+                <div class="number" id="total-receipts">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Total Amount</h3>
+                <div class="number" id="total-amount">$0</div>
+            </div>
+            <div class="stat-card">
+                <h3>This Month</h3>
+                <div class="number" id="month-amount">$0</div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-primary" onclick="scanReceipts()">🔄 Scan Gmail</button>
+            <a href="/api/export/csv" class="btn btn-primary">📥 Export CSV</a>
+        </div>
+
+        <div class="receipts-table">
+            <div id="loading" class="loading">Loading receipts...</div>
+            <div id="empty-state" class="empty-state" style="display: none;">
+                <div class="empty-state-icon">📧</div>
+                <h3>No receipts found</h3>
+                <p>Click "Scan Gmail" to find your receipts</p>
+            </div>
+            
+            <table id="receipts-table" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Sender</th>
+                        <th>Subject</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="receipts-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Load receipts on page load
+        async function loadReceipts() {
+            try {
+                const response = await fetch('/api/receipts');
+                const data = await response.json();
+                
+                if (data.receipts && data.receipts.length > 0) {
+                    displayReceipts(data.receipts);
+                    updateStats(data.receipts);
+                } else {
+                    showEmptyState();
+                }
+            } catch (error) {
+                console.error('Error loading receipts:', error);
+                showEmptyState();
+            }
+        }
+
+        function displayReceipts(receipts) {
+            const tbody = document.getElementById('receipts-body');
+            const table = document.getElementById('receipts-table');
+            const loading = document.getElementById('loading');
+            const emptyState = document.getElementById('empty-state');
+
+            tbody.innerHTML = receipts.map(receipt => `
+                <tr>
+                    <td>${new Date(receipt.date).toLocaleDateString()}</td>
+                    <td>${receipt.sender}</td>
+                    <td>${receipt.subject}</td>
+                    <td class="amount">${receipt.amount ? '$' + receipt.amount.toFixed(2) : '-'}</td>
+                    <td>${receipt.status}</td>
+                </tr>
+            `).join('');
+
+            loading.style.display = 'none';
+            emptyState.style.display = 'none';
+            table.style.display = 'table';
+        }
+
+        function updateStats(receipts) {
+            const totalReceipts = receipts.length;
+            const totalAmount = receipts.reduce((sum, r) => sum + (r.amount || 0), 0);
+            
+            const now = new Date();
+            const monthReceipts = receipts.filter(r => {
+                const receiptDate = new Date(r.date);
+                return receiptDate.getMonth() === now.getMonth() && 
+                       receiptDate.getFullYear() === now.getFullYear();
+            });
+            const monthAmount = monthReceipts.reduce((sum, r) => sum + (r.amount || 0), 0);
+
+            document.getElementById('total-receipts').textContent = totalReceipts;
+            document.getElementById('total-amount').textContent = '$' + totalAmount.toFixed(2);
+            document.getElementById('month-amount').textContent = '$' + monthAmount.toFixed(2);
+        }
+
+        function showEmptyState() {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('empty-state').style.display = 'block';
+        }
+
+        async function scanReceipts() {
+            const button = document.querySelector('button');
+            button.disabled = true;
+            button.textContent = '🔍 Scanning...';
+
+            try {
+                const response = await fetch('/api/scan');
+                const data = await response.json();
+                
+                if (data.success) {
+                    alert(`Found ${data.count} receipts!`);
+                    loadReceipts(); // Refresh the list
+                } else {
+                    alert('Scan failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Scan error:', error);
+                alert('Scan failed. Please check your Gmail connection.');
+            } finally {
+                button.disabled = false;
+                button.textContent = '🔄 Scan Gmail';
+            }
+        }
+
+        // Load on page load
+        loadReceipts();
+    </script>
+</body>
+</html>
