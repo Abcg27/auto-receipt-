@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Welcome to AutoReceipt!</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧾</text></svg>">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .success-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        .success-container h1 {
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .success-container .subtitle {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        .next-steps {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        .next-steps h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .step-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .step-content h4 {
+            color: #333;
+            margin-bottom: 0.3rem;
+        }
+        .step-content p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: transform 0.2s;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+        .email-notice {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            color: #856404;
+            font-size: 0.95rem;
+        }
+        .share-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+        .share-section h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .share-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: transform 0.2s;
+        }
+        .share-btn:hover {
+            transform: translateY(-2px);
+        }
+        .twitter { background: #1da1f2; }
+        .facebook { background: #4267B2; }
+        .linkedin { background: #0077b5; }
+        .email { background: #667eea; }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="success-icon">🎉</div>
+        <h1>Welcome to AutoReceipt!</h1>
+        <p class="subtitle">Early-Bird Member #13</p>
+
+        <div class="email-notice">
+            📧 Check your email! We sent a confirmation with your receipt and next steps.
+        </div>
+
+        <div class="next-steps">
+            <h3>What's Next?</h3>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Early Access (2 weeks before public)</h4>
+                    <p>You'll receive an invite link before everyone else. Launch is planned for June 2026.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Free Onboarding Call</h4>
+                    <p>We'll help you connect Gmail and set up your first export. Book your slot via the email we sent.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Shape the Product</h4>
+                    <p>Reply to any email with feature requests. Early-birds directly influence what we build next!</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="/auto-receipt-/" class="cta-button">← Back to Home</a>
+
+        <div class="share-section">
+            <h3>Know someone who hates manual receipts?</h3>
+            <p style="color: #666; margin-bottom: 1rem;">Share AutoReceipt and help them save 30+ hours/month!</p>
+            
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Just%20joined%20AutoReceipt%20early-bird!%20Automated%20receipt%20scanning%20for%20%249%2Fmonth.%20Sign%20up%3A%20https%3A%2F%2Fabcg27.github.io%2Fauto-receipt-%2F" target="_blank" class="share-btn twitter">Share on Twitter</a>
+                <a href="mailto:?subject=AutoReceipt%20-%20Stop%20Wasting%20Hours%20on%20Receipts&body=Hey%2C%0A%0AI%20just%20signed%20up%20for%20AutoReceipt%20-%20a%20tool%20that%20automatically%20scans%20Gmail%20for%20receipts%20and%20exports%20them%20to%20QuickBooks.%0A%0AEarly-bird%20price%3A%20%249%2Fmonth%20forever%0A%0ASign%20up%20here%3A%20https%3A%2F%2Fabcg27.github.io%2Fauto-receipt-%2F" class="share-btn email">Share via Email</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
