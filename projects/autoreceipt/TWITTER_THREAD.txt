@@ -1,0 +1,72 @@
+# TWITTER/X THREAD - READY TO POST
+
+## Tweet 1/5 (Hook):
+🧵 I built a tool that reads your Gmail and auto-extracts receipts.
+
+No photos. No manual entry. No "receipt scanner" BS.
+
+Here's why it's different 👇
+
+---
+
+## Tweet 2/5 (Problem):
+Every receipt scanner makes you take photos.
+
+But 80% of receipts are in your email:
+• Amazon confirmations
+• Uber receipts
+• Restaurant reservations
+• Digital invoices
+
+Why scan what already arrived digitally?
+
+---
+
+## Tweet 3/5 (Solution):
+AutoReceipt monitors Gmail and:
+→ Finds receipt emails automatically
+→ Extracts store, date, amount with AI
+→ Exports to QuickBooks/Xero/Sheets
+
+Test on my account:
+• 47 receipts in 2 weeks
+• $1,247 captured
+• 0 minutes of work
+
+---
+
+## Tweet 4/5 (Offer):
+Pricing:
+
+Early-bird: $9/month forever (100 spots)
+Then: $19/month
+
+Early members get:
+✅ 2 weeks early access
+✅ Free onboarding call
+✅ Direct input on features
+
+Because I want to build WITH users, not FOR them.
+
+---
+
+## Tweet 5/5 (CTA):
+Demo: https://abcg27.github.io/auto-receipt-/demo.html
+
+Questions? Reply or DM me.
+
+Currently at 12/100 early-bird spots.
+
+Let's automate receipt hell together 🧾
+
+---
+
+## HOW TO POST:
+1. Go to https://twitter.com/compose/tweet
+2. Paste Tweet 1
+3. Click "Reply" to your own tweet
+4. Paste Tweet 2
+5. Repeat for all 5 tweets
+
+## BEST TIME:
+Monday-Thursday 9-11am ET

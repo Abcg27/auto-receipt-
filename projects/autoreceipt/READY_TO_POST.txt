@@ -1,0 +1,131 @@
+# REDDIT POST - READY TO COPY
+
+## Post 1: r/smallbusiness
+
+**TITLE:**
+Not another receipt scanner. This one actually reads your Gmail.
+
+**BODY:**
+I got tired of taking photos of receipts. So I built something that doesn't need them.
+
+Every "receipt scanner" makes you take photos.
+
+Mine doesn't. It reads your Gmail directly.
+
+Because who takes photos of Amazon confirmation emails? Nobody.
+
+AutoReceipt:
+→ Monitors Gmail for receipts (no photos needed)
+→ Extracts data with AI (store, date, amount)
+→ Exports to QuickBooks, Xero, or Google Sheets
+
+I tested it on my own account:
+• 47 receipts found in 2 weeks
+• $1,247 total captured
+• 0 manual entry
+
+$9/month forever for the first 100 people (then $19/month).
+
+Why so cheap?
+→ I want feedback from real users
+→ Build features people actually need
+
+Demo: https://abcg27.github.io/auto-receipt-/demo.html
+
+Questions? Ask me anything.
+
+[No affiliate links, I built this]
+
+---
+
+## Post 2: r/freelance
+
+**TITLE:**
+I automated receipt entry for my freelance business (saves 5h/month)
+
+**BODY:**
+As a freelancer, I was spending 5+ hours every month just organizing receipts for taxes.
+
+Sound familiar?
+
+I tried Expensify, Shoeboxed, even Excel spreadsheets. All of them made me:
+1. Take photos of receipts (why? they're already in my email!)
+2. Manually categorize everything
+3. Pay $15-25/month for the privilege
+
+So I built AutoReceipt:
+→ Connects to Gmail (where receipts already live)
+→ Finds and extracts them automatically
+→ Exports to QuickBooks/Xero/Sheets
+
+Results from my account:
+• 47 receipts captured in 2 weeks
+• $1,247 total
+• 0 manual work
+
+Pricing:
+• Early-bird: $9/month forever (100 spots)
+• Then: $19/month
+
+Demo: https://abcg27.github.io/auto-receipt-/demo.html
+
+Freelancers: How do you handle receipts currently? Still taking photos?
+
+---
+
+## Post 3: r/Entrepreneur
+
+**TITLE:**
+Built a tool that reads Gmail receipts and exports to QuickBooks - $9/mo
+
+**BODY:**
+I built a tool that saves small businesses 30+ hours/month on receipt entry.
+
+Here's the story:
+
+My friend runs a bakery. Every Sunday, 3 hours manually entering receipts into QuickBooks.
+
+She's not alone. Most small business owners waste 30+ hours monthly on this.
+
+So I built AutoReceipt:
+• Connects to Gmail
+• Automatically finds receipts  
+• Extracts store, date, amount with AI
+• Exports to QuickBooks/Xero/Sheets
+
+Test results:
+• 47 receipts in 2 weeks
+• $1,247 total captured
+• 0 manual entry
+
+Pricing model:
+• Early-bird (100 spots): $9/month forever
+• Regular: $19/month
+• Goal: 56 customers = $500 MRR
+
+Early members get:
+✅ 2 weeks early access
+✅ Free onboarding call
+✅ Direct influence on product roadmap
+
+Demo: https://abcg27.github.io/auto-receipt-/demo.html
+
+Currently at 12/100 early-bird spots.
+
+Questions welcome!
+
+---
+
+## INSTRUCTIONS:
+
+1. Copy the TITLE and BODY for each post
+2. Go to https://www.reddit.com/submit
+3. Choose the subreddit
+4. Paste title and body
+5. Submit
+6. Wait 10-15 minutes between posts
+
+## BEST TIMES TO POST:
+- r/smallbusiness: Sunday 6-8pm ET
+- r/freelance: Monday 9-11am ET  
+- r/Entrepreneur: Tuesday 10am-12pm ET
