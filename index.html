@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoReceipt — Never Enter a Receipt Manually Again</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+            color: white;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        .hero p {
+            font-size: 1.35rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        .cta-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .cta-form input[type="email"] {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            transition: border-color 0.3s;
+        }
+        .cta-form input[type="email"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .cta-form button {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .cta-form button:hover {
+            transform: translateY(-2px);
+        }
+        .urgency {
+            text-align: center;
+            margin-top: 1rem;
+            color: #667eea;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .features {
+            background: white;
+            padding: 4rem 1rem;
+            margin-top: 2rem;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .feature {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        .feature h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        .feature p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .social-proof {
+            background: #f8f9fa;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        .social-proof h2 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        .count {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: rgba(255,255,255,0.7);
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Stop Wasting Hours on Receipts</h1>
+        <p>AutoReceipt scans your Gmail, finds every receipt, and exports them to your accounting software — automatically.</p>
+        
+        <div class="cta-form">
+            <form action="https://formspree.io/f/mzdwpnvj" method="POST" id="waitlist-form">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <input type="hidden" name="plan" value="early-bird">
+                <button type="submit">Get Early Access — $9/month Forever</button>
+            </form>
+            <div class="urgency">⚡ Only 100 early-bird spots available</div>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="features-grid">
+            <div class="feature">
+                <h3>📧 Gmail Integration</h3>
+                <p>Connect your Gmail with one click. We scan for receipt emails automatically — no manual uploads needed.</p>
+            </div>
+            <div class="feature">
+                <h3>🤖 AI Extraction</h3>
+                <p>Our AI reads receipt emails and extracts store name, date, amount, and line items with 98% accuracy.</p>
+            </div>
+            <div class="feature">
+                <h3>📊 Auto-Export</h3>
+                <p>Send receipts directly to QuickBooks, Xero, Google Sheets, or download as CSV. Your choice.</p>
+            </div>
+            <div class="feature">
+                <h3>⏰ Save 30+ Hours/Month</h3>
+                <p>Small businesses waste 30+ hours monthly on manual receipt entry. Get that time back.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="social-proof">
+        <h2>Join the Waitlist</h2>
+        <div class="count" id="subscriber-count">0</div>
+        <p>early adopters ready to automate their receipts</p>
+    </div>
+
+    <div class="footer">
+        <p>Built for small business owners, side hustlers, and anyone tired of receipt piles.</p>
+        <p style="margin-top:0.5rem;">© 2026 AutoReceipt</p>
+    </div>
+
+    <script>
+        // Simple counter animation
+        const countEl = document.getElementById('subscriber-count');
+        let count = 0;
+        const target = 0; // Update this manually or via API
+        
+        function animateCount() {
+            if (count < target) {
+                count += Math.ceil((target - count) / 20);
+                countEl.textContent = count;
+                requestAnimationFrame(animateCount);
+            }
+        }
+        
+        // Start with 0, update when you get signups
+        countEl.textContent = '0';
+    </script>
+</body>
+</html>
