@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoReceipt — DEMO</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            min-height: 100vh;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar h1 { font-size: 1.5rem; }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .stat-card h3 {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .receipts-table {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        .receipts-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .receipts-table th {
+            background: #f8f9fa;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9rem;
+        }
+        .receipts-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            color: #555;
+            font-size: 0.9rem;
+        }
+        .receipts-table tr:hover {
+            background: #f8f9fa;
+        }
+        .amount {
+            font-weight: 600;
+            color: #667eea;
+        }
+        .demo-badge {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: #ff6b6b;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            z-index: 1000;
+        }
+        .actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-badge">🔴 DEMO MODE</div>
+    
+    <div class="navbar">
+        <h1>🧾 AutoReceipt Dashboard</h1>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+            <span>alexandre@example.com</span>
+            <button class="btn btn-primary" style="background: white; color: #667eea;">Logout</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Receipts</h3>
+                <div class="number">47</div>
+            </div>
+            <div class="stat-card">
+                <h3>Total Amount</h3>
+                <div class="number">$1,247.50</div>
+            </div>
+            <div class="stat-card">
+                <h3>This Month</h3>
+                <div class="number">$384.20</div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-primary">🔄 Scan Gmail</button>
+            <button class="btn btn-primary">📥 Export CSV</button>
+        </div>
+
+        <div class="receipts-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Sender</th>
+                        <th>Subject</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>May 17, 2026</td>
+                        <td>Amazon.com</td>
+                        <td>Your Amazon order receipt #112-4589...</td>
+                        <td class="amount">$34.99</td>
+                        <td>✅ Processed</td>
+                    </tr>
+                    <tr>
+                        <td>May 16, 2026</td>
+                        <td>Uber</td>
+                        <td>Your Thursday trip with Uber</td>
+                        <td class="amount">$18.50</td>
+                        <td>✅ Processed</td>
+                    </tr>
+                    <tr>
+                        <td>May 15, 2026</td>
+                        <td>Starbucks</td>
+                        <td>Receipt from Starbucks #2847</td>
+                        <td class="amount">$7.45</td>
+                        <td>✅ Processed</td>
+                    </tr>
+                    <tr>
+                        <td>May 15, 2026</td>
+                        <td>Best Buy</td>
+                        <td>Thank you for your purchase!</td>
+                        <td class="amount">$129.99</td>
+                        <td>✅ Processed</td>
+                    </tr>
+                    <tr>
+                        <td>May 14, 2026</td>
+                        <td>Shell Gas</td>
+                        <td>Your fuel receipt - Station #4829</td>
+                        <td class="amount">$45.00</td>
+                        <td>✅ Processed</td>
+                    </tr>
+                    <tr>
+                        <td>May 14, 2026</td>
+                        <td>DoorDash</td>
+                        <td>Order delivered! Here's your receipt</td>
+                        <td class="amount">$32.18</td>
+                        <td>⏳ Pending</td>
+                    </tr>
+                    <tr>
+                        <td>May 13, 2026</td>
+                        <td>Walmart</td>
+                        <td>Your Walmart order is confirmed</td>
+                        <td class="amount">$67.83</td>
+                        <td>✅ Processed</td>
+                    </tr>
+                    <tr>
+                        <td>May 12, 2026</td>
+                        <td>Airbnb</td>
+                        <td>Reservation confirmed - Receipt enclosed</td>
+                        <td class="amount">$189.00</td>
+                        <td>✅ Processed</td>
+                    </tr>
+                    <tr>
+                        <td>May 11, 2026</td>
+                        <td>Netflix</td>
+                        <td>Your Netflix receipt</td>
+                        <td class="amount">$15.99</td>
+                        <td>✅ Processed</td>
+                    </tr>
+                    <tr>
+                        <td>May 10, 2026</td>
+                        <td>Apple Store</td>
+                        <td>Apple Order Confirmation - W48293</td>
+                        <td class="amount">$799.00</td>
+                        <td>✅ Processed</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div style="text-align: center; padding: 2rem; color: #999;">
+        <p>📊 This is a demo with sample data to show how AutoReceipt works</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">In production, this would scan your real Gmail and extract actual receipts</p>
+    </div>
+</body>
+</html>
