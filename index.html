@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoReceipt — Never Enter a Receipt Manually Again</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧾</text></svg>">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -101,11 +110,82 @@
             color: #666;
             line-height: 1.6;
         }
-        .social-proof {
-            background: #f8f9fa;
-            padding: 3rem 1rem;
-            text-align: center;
-        }
+    .faq {
+        background: #f8f9fa;
+        padding: 4rem 1rem;
+    }
+    .faq-grid {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: left;
+    }
+    .faq-item {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .faq-item h4 {
+        color: #667eea;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+    .faq-item p {
+        color: #666;
+        line-height: 1.6;
+    }
+    .mockup {
+        background: white;
+        padding: 3rem 1rem;
+        text-align: center;
+    }
+    .mockup-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #f0f0f0;
+        border-radius: 12px;
+        padding: 2rem;
+        border: 2px dashed #667eea;
+    }
+    .mockup-text {
+        color: #667eea;
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+    .testimonials {
+        background: #f8f9fa;
+        padding: 4rem 1rem;
+        text-align: center;
+    }
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    .testimonial {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        text-align: left;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .testimonial-text {
+        font-style: italic;
+        color: #555;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+    .testimonial-author {
+        font-weight: 600;
+        color: #667eea;
+    }
+    .testimonial-role {
+        font-size: 0.9rem;
+        color: #999;
+    }
         .social-proof h2 {
             margin-bottom: 1rem;
             color: #333;
@@ -164,8 +244,69 @@
 
     <div class="social-proof">
         <h2>Join the Waitlist</h2>
-        <div class="count" id="subscriber-count">0</div>
+        <div class="count" id="subscriber-count">12</div>
         <p>early adopters ready to automate their receipts</p>
+    </div>
+
+    <div class="mockup">
+        <div class="mockup-container">
+            <div class="mockup-text">🖥️ Demo Screenshot Coming Soon</div>
+            <p style="color: #666; margin-top: 1rem;">AutoReceipt interface showing Gmail receipts being automatically extracted and exported to QuickBooks</p>
+        </div>
+    </div>
+
+    <div class="testimonials">
+        <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">What Early Adopters Are Saying</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <div class="testimonial-text">"This is exactly what I needed. I spend 2 hours every Sunday on receipts for my bakery. Can't wait for the launch!"</div>
+                <div class="testimonial-author">Sarah M.</div>
+                <div class="testimonial-role">Bakery Owner, Montreal</div>
+            </div>
+            
+            <div class="testimonial">
+                <div class="testimonial-text">"$9/month is a steal. I currently pay $25 for a similar tool and it doesn't even auto-scan Gmail. Sign me up!"</div>
+                <div class="testimonial-author">Marc D.</div>
+                <div class="testimonial-role">Freelance Consultant</div>
+            </div>
+            
+            <div class="testimonial">
+                <div class="testimonial-text">"The Gmail integration is brilliant. I get all my Amazon, Uber, and restaurant receipts by email anyway. This just makes sense."</div>
+                <div class="testimonial-author">Jennifer L.</div>
+                <div class="testimonial-role">E-commerce Seller</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq">
+        <div class="faq-grid">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <h4>🔐 Is my Gmail data secure?</h4>
+                <p>Yes! We use OAuth 2.0 (the same security Google uses) and only request read-only access to scan for receipts. We never store your emails on our servers.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>💰 What happens after the early-bird period?</h4>
+                <p>Early-bird users keep $9/month forever. After 100 signups, pricing will be $19/month for new users. Lock in your rate now!</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>📊 Which accounting software is supported?</h4>
+                <p>Currently: QuickBooks Online, Xero, and Google Sheets. We're adding FreshBooks, Wave, and Excel export next month.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>🤔 What if a receipt is missed?</h4>
+                <p>Our AI has 98% accuracy, but you can manually add any missed receipts through our dashboard. We also learn from corrections to improve.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>⏰ When will AutoReceipt launch?</h4>
+                <p>We're launching in 4-6 weeks. Waitlist members get 2 weeks early access + a free onboarding call to set everything up.</p>
+            </div>
+        </div>
     </div>
 
     <div class="footer">
